@@ -1,0 +1,145 @@
+CREATE WAREHOUSE AG_FSDA_POWERBI
+WITH WAREHOUSE_SIZE = 'SMALL' WAREHOUSE_TYPE = 'STANDARD' AUTO_SUSPEND = 300 AUTO_RESUME = TRUE; 
+
+CREATE DATABASE AG_FSDA_POWERBI;
+USE AG_FSDA_POWERBI;
+
+
+---------------TABLE STATE_REGION--------------
+CREATE OR REPLACE TABLE AG_STATE_REGION(
+State_code VARCHAR(3) NOT NULL,
+State VARCHAR(20) NOT NULL,
+Region VARCHAR(15) NOT NULL,
+ID INTEGER );
+SELECT * FROM AG_STATE_REGION;
+
+------------TABLE REGION-----------------
+CREATE OR REPLACE TABLE AG_REGION(
+id NUMBER(3,0) NOT NULL,
+name VARCHAR(30) NOT NULL,
+county VARCHAR(100) NOT NULL,
+state_code VARCHAR(2) NOT NULL,
+state VARCHAR(100) NOT NULL,
+type VARCHAR(100) NOT NULL,
+latitude NUMBER(10,6) NOT NULL,
+longitude NUMBER(10,6) NOT NULL,
+area_code NUMBER(5) NOT NULL,
+population NUMBER(15) NOT NULL,
+households NUMBER(15) NOT NULL,
+median_income NUMBER(15) NOT NULL,
+land_area NUMBER(15) NOT NULL,
+water_area NUMBER(15) NOT NULL,
+time_zone VARCHAR(100) NOT NULL);
+
+SELECT * FROM AG_REGION;
+
+------------------TABLE PRODUCT-------------------
+
+CREATE OR REPLACE TABLE AG_PRODUCT(
+Product_id NUMBER(2,0) NOT NULL,
+Product_Category VARCHAR(50) NOT NULL,
+ProductSubCategory VARCHAR(50) NOT NULL,
+Product VARCHAR(30) NOT NULL);
+
+SELECT * FROM AG_PRODUCT;
+
+
+---------------TABLE CUSTOMERS--------------
+
+CREATE OR REPLACE TABLE AG_CUSTOMER(
+CustomerID NUMBER(10,0),
+LastName VARCHAR(50),
+FirstName VARCHAR(50),
+BirthDate VARCHAR(30),
+Gender VARCHAR(6),
+ParticipantType VARCHAR(50),
+RegionID NUMBER(5,0),
+MaritalStatus VARCHAR(20));
+
+SELECT * FROM  AG_CUSTOMER;
+
+-------------TABLE COMPLAIN-----------
+
+CREATE OR REPLACE TABLE AG_COMPLAIN(
+ID NUMBER(5,0),
+ComplainDate VARCHAR(30),
+CompletionDate VARCHAR(30),
+CustomerID NUMBER(10,0),
+BrokerID NUMBER(10,0),
+ProductID NUMBER(5,0),
+ComplainPriorityID NUMBER(2,0),
+ComplainTypeID NUMBER(2,0),
+ComplainSourceID NUMBER(2,0),
+ComplainCategoryID  NUMBER(5,0),
+ComplainStatusID  NUMBER(2,0),
+AdministratorID VARCHAR(10) NOT NULL,
+ClientSatisfaction VARCHAR(10),
+ExpectedReimbursement INTEGER );
+
+SELECT * FROM  AG_COMPLAIN;
+
+
+--------------------TABLE BROKER-------------------
+
+CREATE OR REPLACE TABLE AG_BROKER(
+BrokerID INTEGER,
+BrokerCode VARCHAR(30),
+BrokerFullName VARCHAR(50),
+DistributionNetwork VARCHAR(50),
+DistributionChannel VARCHAR(50),
+CommissionScheme VARCHAR(50));
+
+
+SELECT * FROM AG_BROKER;
+
+
+------JOINING THE FINAL TABLE-------------------
+CREATE OR REPLACE TABLE FINAL_OUTPUT_HALF_DONUT_CHART AS( 
+
+SELECT CUS.CustomerID,CUS.LastName,CUS.FirstName,CUS.Gender,
+CUS.RegionID,REG.id,REG.name,REG.county,REG.state_code,ST.State_code,
+ST.State,ST.Region,ST.ID,COM.ID,COM.CustomerID,COM.BrokerID,COM.ProductID,COM.ComplainStatusID
+FROM AG_CUSTOMER CUS
+LEFT OUTER JOIN 
+AG_REGION REG ON CUS.RegionID = REG.id
+LEFT OUTER JOIN 
+AG_STATE_REGION ST ON REG.state_code = ST.State_code
+LEFT OUTER JOIN 
+AG_COMPLAIN COM ON CUS.CustomerID = COM.CustomerID);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,49 @@
+State Code,State,Region,ID
+AL,Alabama,South,1
+AR,Arkansas,South,2
+AZ,Arizona,West,3
+CA,California,West,4
+CO,Colorado,West,5
+CT,Connecticut,Northeast,6
+DC,District of Columbia,South,7
+DE,Delaware,South,8
+FL,Florida,South,9
+GA,Georgia,South,10
+HI,Hawaii,West,11
+IA,Iowa,Midwest,12
+ID,Idaho,West,13
+IL,Illinois,Midwest,14
+IN,Indiana,Midwest,15
+KS,Kansas,Midwest,16
+KY,Kentucky,South,17
+LA,Louisiana,South,18
+MA,Massachusetts,Northeast,19
+MD,Maryland,South,20
+ME,Maine,Northeast,21
+MI,Michigan,Midwest,22
+MN,Minnesota,Midwest,23
+MO,Missouri,Midwest,24
+MS,Mississippi,South,25
+MT,Montana,West,26
+NC,North Carolina,South,27
+ND,North Dakota,Midwest,28
+NE,Nebraska,Midwest,29
+NH,New Hampshire,Northeast,30
+NJ,New Jersey,Northeast,31
+NM,New Mexico,West,32
+NV,Nevada,West,33
+NY,New York,Northeast,34
+OH,Ohio,Midwest,35
+OK,Oklahoma,South,36
+OR,Oregon,West,37
+PA,Pennsylvania,Northeast,38
+RI,Rhode Island,Northeast,39
+SC,South Carolina,South,40
+SD,South Dakota,Midwest,41
+TN,Tennessee,South,42
+TX,Texas,South,43
+UT,Utah,West,44
+VA,Virginia,South,45
+WA,Washington,West,46
+WI,Wisconsin,Midwest,47
+WY,Wyoming,West,48
